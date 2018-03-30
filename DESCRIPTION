@@ -1,5 +1,5 @@
 Package: superNetballR
-Title: Downloads and tidies super netball statistics.
+Title: Downloads and tidies super netball statistics
 Version: 0.0.1
 Authors@R: person("Steve", "Lane", email = "lane.s@unimelb.edu.au", role = c("aut", "cre"))
 Description: This package provides functions to easily download and manipulate data from super netball matches.
@@ -9,7 +9,9 @@ Encoding: UTF-8
 LazyData: true
 Suggests: knitr,
     rmarkdown,
-    here
+    here,
+    testthat
 VignetteBuilder: knitr
 Imports: dplyr,
     httr
+RoxygenNote: 6.0.1
