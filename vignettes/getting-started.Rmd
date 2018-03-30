@@ -1,0 +1,44 @@
+---
+title: "Getting Started with superNetballR"
+author: "Steve Lane"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<!-- Time-stamp: <2018-03-30 19:53:06 (slane)> -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+Data are stored in 'https://mc.championdata.com/data/' under certain match and round id's. The 2017 home and away season is in the 10083 folder, and can be accessed using a GET request; this function will grab the whole list of data. To get the first game of the first round in season 2017:
+
+```{r get-data-function,eval=FALSE}
+## cat(htmltools::includeText("../R/selectMatch.R"))
+library(dplyr)
+library(httr)
+library(here)
+library(superNetballR)
+round1_game1 <- downloadMatch("10083", 1, 1)
+class(round1_game1)
+names(round1_game1)
+
+```
+
+Final scores are in `teamStats`, quarter-by-quarter are in `teamPeriodStats`.
+
+To get the first semifinal in the 2017 season:
+
+```{r get-finals,eval=FALSE}
+semifinal <- downloadMatch("10084", 1, 1)
+
+```
