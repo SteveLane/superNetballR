@@ -2,9 +2,16 @@
 title: Getting Super Netball Data
 author:
 - Stephen E. Lane
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    theme: yeti
+    highlight: zenburn
+    fig_caption: true
 ---
 
-<!-- Time-stamp: <2018-03-30 19:00:42 (slane)> -->
+<!-- Time-stamp: <2018-03-30 19:22:22 (slane)> -->
 
 ```{r setup,echo=FALSE,warning=FALSE,message=FALSE,cache=FALSE,results="hide"}
 knitr::opts_chunk$set(cache = FALSE, error = FALSE, warning = FALSE,
@@ -22,7 +29,7 @@ Data are stored in 'https://mc.championdata.com/data/' under certain match and r
 library(dplyr)
 library(httr)
 library(here)
-source("../R/selectMatch.R", echo = TRUE)
+source(here("R", "selectMatch.R"), echo = TRUE)
 round1_game1 <- selectMatch("10083", 1, 1)
 class(round1_game1)
 names(round1_game1)
@@ -33,111 +40,27 @@ Final scores are in `teamStats`, quarter-by-quarter are in `teamPeriodStats`.
 
 Let's grab it all now, and figure out how to process it soon...
 
-```{r get-all-data}
+```{r get-home-away}
 for (i in seq_len(14)) {
     for (j in seq_len(4)) {
         data <- selectMatch("10083", i, j)
-        saveRDS(data, file = "../data-raw/
+        saveRDS(data, file = here("data-raw",
+                                  paste0("round_", i, "_game_", j, ".rds")))
+    }
+}
+
+```
+
+```{r get-finals}
+data <- selectMatch("10084", 1, 1)
+saveRDS(data, file = here("data-raw", "semifinal_1.rds"))
+data <- selectMatch("10084", 1, 2)
+saveRDS(data, file = here("data-raw", "semifinal_2.rds"))
+data <- selectMatch("10084", 2, 1)
+saveRDS(data, file = here("data-raw", "prelimfinal.rds"))
+data <- selectMatch("10084", 3, 1)
+saveRDS(data, file = here("data-raw", "grandfinal.rds"))
 
 ```
 
 It will also be good to run all of this inside a docker container. I'm going to build upon the [rocker/verse:3.4.3](https://github.com/rocker-org/rocker-versioned) version for that. The dockerfile is located in the `docker/` directory. Once the selenium container is up and running, attach to it:
-
-```{r libraries}
-library(dplyr)
-library(RSelenium)
-library(rvest)
-sel_dir <- remoteDriver(
-    remoteServerAddr = "172.17.0.2",
-    port = 4444L,
-    browserName = "chrome"
-)
-sel_dir$open()
-sel_dir$navigate("https://mc.championdata.com/super_netball/")
-sel_dir$refresh()
-## Now select first round, 2017
-match_button <- sel_dir$findElement(
-                            using = "class",
-                            value = "cd6364_match_button"
-                        )
-match_button$clickElement()
-comp <- sel_dir$findElement(
-                    using = "class",
-                    value = "cd6364_competition_selection"
-                )
-round <- sel_dir$findElement(
-                     using = "class",
-                     value = "cd6364_round_selection"
-                 )
-comp <- comp$selectTag()
-num <- which(comp$value == "10083")
-comp$elements[[num]]$clickElement()
-round <- round$selectTag()
-num <- which(round$value == "1")
-comp$elements[[num]]$clickElement()
-
-date_elm <- sel_dir$findElement(
-                     using = "class",
-                     value = "cd6364_date"
-                 )
-date_elm$clickElement()
-
-```
-
-Now that we're on the first game page, we can scrape the table:
-
-```{r initial-table-scrape}
-## Team names
-teams <- sel_dir$findElement(
-                     using = "class",
-                     value = "cd6364_match_name"
-                 )
-teams <- teams$getElementText()[[1]]
-teams <- strsplit(teams, " vs. ")[[1]]
-
-## Round
-round <- sel_dir$findElement(
-                     using = "class",
-                     value = "cd6364_roundNum"
-                 )
-round <- round$getElementText()[[1]]
-
-## Date and Time?
-match <- sel_dir$findElement(
-                     using = "class",
-                     value = "cd6364_match_details"
-                 )
-match <- match$getElementText()[[1]]
-## But difficult to parse... record as string for time being
-match_date <- strsplit(match, " - ")[[1]][2]
-
-## Get Scores by quarter
-scoreboard <- sel_dir$findElement(
-                          using = "class",
-                          value = "cd6364_div_scoreboard"
-                      )
-scoreboard <- scoreboard$getElementText()[[1]]
-scores <- strsplit(scoreboard, "\n")[[1]]
-home <- as.numeric(strsplit(scores[2], " ")[[1]])
-away <- as.numeric(strsplit(scores[3], " ")[[1]])
-
-
-test$getElementText()[[1]]
-
-test <- sel_dir$findElement(
-                    using = "id",
-                    value = "cd6364_SHELL_scorebar"
-                )
-test2 <- test$findElement(
-                  using = "class",
-                  value = "cd6364_scoreboard"
-              )
-
-test2$getElementText()[[1]]
-
-test <- pg %>% read_xml() %>%
-    xml_ns_strip() %>%
-    xml_find_all(xpath = '//td') %>%
-    xml_text()
-
-```
