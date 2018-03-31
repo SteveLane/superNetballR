@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- Time-stamp: <2018-03-30 19:53:06 (slane)> -->
+<!-- Time-stamp: <2018-03-30 20:09:38 (slane)> -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
