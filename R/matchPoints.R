@@ -2,7 +2,7 @@
 #'
 #' \code{matchPoints} calculates final match goals and score difference.
 #'
-#' @param data Match data.
+#' @param df Match data.
 #'
 #' @return A data frame containing the final scores, and points for the ladder.
 #' @export

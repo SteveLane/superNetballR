@@ -5,7 +5,6 @@
 #' @docType package
 #' @name superNetballR
 #' @importFrom dplyr %>%
-#' @importFrom rlang !!
 NULL
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines
