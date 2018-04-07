@@ -7,7 +7,7 @@
 matchPoints(df)
 }
 \arguments{
-\item{data}{Match data.}
+\item{df}{Match data.}
 }
 \value{
 A data frame containing the final scores, and points for the ladder.
