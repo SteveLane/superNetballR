@@ -1,0 +1,13 @@
+template:
+  params:
+    bootswatch: spacelab
+
+authors:
+  - Steve Lane:
+    href: https://gtown-ds.netlify.com/
+
+navbar:
+  type: inverse
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/SteveLane/superNetballR/
