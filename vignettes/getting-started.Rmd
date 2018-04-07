@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- Time-stamp: <2018-03-30 20:09:38 (slane)> -->
+<!-- Time-stamp: <2018-04-08 09:03:30 (slane)> -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -20,25 +20,65 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-Data are stored in 'https://mc.championdata.com/data/' under certain match and round id's. The 2017 home and away season is in the 10083 folder, and can be accessed using a GET request; this function will grab the whole list of data. To get the first game of the first round in season 2017:
+This vignette provides an overview to get you started with using `superNetballR`. As at 2018-04-08, this package contains the full 2017 season match statistics and player statistics.
+
+# Sourcing Match Data
+
+Data are sourced from 'https://mc.championdata.com/data/' under certain match and round id's. The 2017 home and away season is in the 10083 folder, whilst the finals are in the 10084 folder. The full (processed) data are supplied with this package.
+
+To download statistics from a single match, you use the `downloadMatch` function. As an example, the following code will download the match from round 5, game 3:
 
 ```{r get-data-function,eval=FALSE}
-## cat(htmltools::includeText("../R/selectMatch.R"))
 library(dplyr)
-library(httr)
-library(here)
 library(superNetballR)
-round1_game1 <- downloadMatch("10083", 1, 1)
-class(round1_game1)
-names(round1_game1)
+round5_game3 <- downloadMatch("10083", 5, 3)
 
 ```
 
-Final scores are in `teamStats`, quarter-by-quarter are in `teamPeriodStats`.
+The downloaded object is a list, containing detailed statistics (including period-by-period statistics) for the match and players:
 
-To get the first semifinal in the 2017 season:
-
-```{r get-finals,eval=FALSE}
-semifinal <- downloadMatch("10084", 1, 1)
+```{r display-data}
+class(round5_game3)
+names(round5_game3)
 
 ```
+
+# Tidying Match and Player Statistics
+
+The full match data can be tidied into match and player statistics, grouped by period.
+
+Tidying match statistics using the `tidyMatch` function:
+
+```{r tidying-match}
+tidied_match <- tidyMatch(round5_game3)
+tidied_match
+
+```
+
+Tidying player statistics using the `tidyPlayers` function:
+
+```{r tidying-players}
+tidied_players <- tidyPlayers(round5_game3)
+tidied_players
+
+```
+
+# Season Data and Ladders
+
+Provided with the `superNetballR` package is the full 2017 season match and player statistics in tidied format. These have been obtained using the previously described methods, tidied, and then combined by rows to produce a single data frame:
+
+```{r season-2017}
+data(season_2017)
+season_2017
+
+```
+
+Using a dataset that contains all matches up to a given round in a season means it is easy to reproduce ladder positions. A `ladders` function is provided that can be used on full season data. For example, here is the ladder as it stood at the end of the 2017 home and away season:
+
+```{r ladders}
+ladder <- ladders(season_2017, round_num = 14)
+ladder
+
+```
+
+The round number is provided above, as the home and away season contained 14 rounds.
