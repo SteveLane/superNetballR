@@ -56,6 +56,10 @@ tidyPlayers <- function(match) {
         dplyr::filter(period <= final_period) %>%
         dplyr::select(-displayName) %>%
         tidyr::gather(stat, value, -playerId, -shortDisplayName, -firstname,
-                      -surname)
+                      -surname) %>%
+        dplyr::mutate(
+                   round = match$matchInfo$roundNumber,
+                   game = match$matchInfo$matchNumber
+               )
     player_stats
 }
