@@ -3,19 +3,15 @@
 #' \code{matchPoints} calculates final match goals and score difference.
 #'
 #' @param data Match data.
-#' @param round Round that the match was played.
-#' @param game Game number during the round.
 #'
 #' @return A data frame containing the final scores, and points for the ladder.
 #' @export
-matchPoints <- function(data, round_num, game_num) {
-    data <- data %>%
-        dplyr::filter(round == round_num, game == game_num)
-    goals <- data %>%
+matchPoints <- function(df) {
+    goals <- df %>%
         dplyr::filter(stat == "goals") %>%
         dplyr::group_by(squadName) %>%
         dplyr::summarise(goals = sum(value))
-    home <- data %>%
+    home <- df %>%
         dplyr::filter(stat == "homeTeam") %>%
         dplyr::group_by(squadName) %>%
         dplyr::distinct()
