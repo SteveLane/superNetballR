@@ -33,3 +33,11 @@
 #'   \item{game}{Game number of the match}
 #' }
 "players_2017"
+
+#' Match and player statistics from round 5, game 3, season 2017.
+#'
+#' A list containing detailed match and player statistics, as obtained using the
+#' \code{downloadMatch} function.
+#'
+#' @format A list.
+"round5_game3"
