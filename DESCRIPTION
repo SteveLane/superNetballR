@@ -13,5 +13,6 @@ Suggests: knitr,
     testthat
 VignetteBuilder: knitr
 Imports: dplyr,
-    httr
+    httr,
+    tidyr
 RoxygenNote: 6.0.1
