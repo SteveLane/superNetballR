@@ -9,7 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- Time-stamp: <2018-04-08 09:03:30 (slane)> -->
+<!-- Time-stamp: <2018-04-08 09:10:18 (slane)> -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -36,6 +36,13 @@ round5_game3 <- downloadMatch("10083", 5, 3)
 ```
 
 The downloaded object is a list, containing detailed statistics (including period-by-period statistics) for the match and players:
+
+```{r source-data,echo=FALSE}
+library(dplyr)
+library(superNetballR)
+data(round5_game3)
+
+```
 
 ```{r display-data}
 class(round5_game3)
