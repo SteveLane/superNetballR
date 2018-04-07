@@ -9,8 +9,7 @@ Encoding: UTF-8
 LazyData: true
 Suggests: knitr,
     rmarkdown,
-    here,
-    testthat
+    here
 VignetteBuilder: knitr
 Imports: dplyr,
     httr,
