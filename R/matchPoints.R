@@ -29,6 +29,7 @@ matchPoints <- function(df) {
                                        TRUE ~ 1
                                        )
                ) %>%
-        dplyr::select(-stat, -value)
+        dplyr::rename(isHome = value) %>%
+        dplyr::select(-stat)
     goals
 }
