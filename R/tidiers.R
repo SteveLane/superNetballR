@@ -27,7 +27,7 @@ tidyMatch <- function(match) {
     team_stats <- team_stats %>%
         dplyr::filter(period <= final_period) %>%
         tidyr::gather(stat, value, -squadId, -squadName,
-                      -squadNickname, -squadCode) %>%
+                      -squadNickname, -squadCode, -period) %>%
         dplyr::mutate(
                    round = match$matchInfo$roundNumber,
                    game = match$matchInfo$matchNumber
