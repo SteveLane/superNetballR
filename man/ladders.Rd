@@ -5,7 +5,7 @@
 \alias{matchResults}
 \title{Calculates ladder positions}
 \usage{
-ladders(df, round_num = NULL, game_num = NULL)
+ladders(df, round_num = NULL, game_num = NULL, old_system = FALSE)
 
 matchResults(df)
 }
@@ -15,6 +15,9 @@ matchResults(df)
 \item{round_num}{Round at which to calculate ladder positions. Optional.}
 
 \item{game_num}{Game at which to calculate ladder positions. Optional.}
+
+\item{old_system}{Logical. Whether to sort by the old scoring system
+(defaults to FALSE).}
 }
 \value{
 Data frame containing the ladder position of all teams. If round and

@@ -18,13 +18,22 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">superNetballR</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">superNetballR</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -82,6 +95,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -89,88 +103,84 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.1.0</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="downloadMatch.html">downloadMatch</a></code> </p>
-          </td>
-          <td><p>Download data from a single match</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ladders.html">ladders</a></code> <code><a href="ladders.html">matchResults</a></code> </p>
-          </td>
-          <td><p>Calculates ladder positions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="matchPoints.html">matchPoints</a></code> </p>
-          </td>
-          <td><p>Calculates the total goals of the match</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="players_2017.html">players_2017</a></code> </p>
-          </td>
-          <td><p>Season 2017 player data.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="round5_game3.html">round5_game3</a></code> </p>
-          </td>
-          <td><p>Match and player statistics from round 5, game 3, season 2017.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="season_2017.html">season_2017</a></code> </p>
-          </td>
-          <td><p>Season 2017 match data.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="superNetballR.html">superNetballR</a></code> </p>
-          </td>
-          <td><p><code>superNetballR</code> package</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tidyMatch.html">tidyMatch</a></code> </p>
-          </td>
-          <td><p>Takes a downloaded match list and tidies the match statistics.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tidyPlayers.html">tidyPlayers</a></code> </p>
-          </td>
-          <td><p>Takes a downloaded match list and tidies the player statistics.</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="downloadMatch.html">downloadMatch()</a></code> </p>
+        </td>
+        <td><p>Download data from a single match</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ladders.html">ladders()</a></code> <code><a href="ladders.html">matchResults()</a></code> </p>
+        </td>
+        <td><p>Calculates ladder positions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="matchPoints.html">matchPoints()</a></code> </p>
+        </td>
+        <td><p>Calculates the total goals of the match</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="players_2017.html">players_2017</a></code> </p>
+        </td>
+        <td><p>Season 2017 player data.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="round5_game3.html">round5_game3</a></code> </p>
+        </td>
+        <td><p>Match and player statistics from round 5, game 3, season 2017.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="season_2017.html">season_2017</a></code> </p>
+        </td>
+        <td><p>Season 2017 match data.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="superNetballR.html">superNetballR</a></code> </p>
+        </td>
+        <td><p><code>superNetballR</code> package</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tidyMatch.html">tidyMatch()</a></code> </p>
+        </td>
+        <td><p>Takes a downloaded match list and tidies the match statistics.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tidyPlayers.html">tidyPlayers()</a></code> </p>
+        </td>
+        <td><p>Takes a downloaded match list and tidies the player statistics.</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -193,5 +203,8 @@
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

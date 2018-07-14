@@ -11,6 +11,7 @@
 #'   \item{squadCode}{Short code for quad}
 #'   \item{stat}{Statistic measured during the match}
 #'   \item{value}{Value of the statistic}
+#'   \item{period}{Which period the statistic is measured in}
 #'   \item{round}{Round number of the match}
 #'   \item{game}{Game number of the match}
 #' }
@@ -29,6 +30,7 @@
 #'   \item{surname}{Player surname}
 #'   \item{stat}{Statistic measured during the match}
 #'   \item{value}{Value of the statistic}
+#'   \item{period}{Which period the statistic is measured in}
 #'   \item{round}{Round number of the match}
 #'   \item{game}{Game number of the match}
 #' }
