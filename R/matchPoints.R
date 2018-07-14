@@ -61,7 +61,7 @@ matchPoints <- function(df) {
         dplyr::group_by(homeSquad, awaySquad) %>%
         dplyr::summarise(homePoints = sum(homePoints),
                          awayPoints = sum(awayPoints)) %>%
-        ungroup()
+        dplyr::ungroup()
     df1 <- points_new %>%
         dplyr::select(contains("home")) %>%
         dplyr::rename(squadName = homeSquad, points_qtr = homePoints)
