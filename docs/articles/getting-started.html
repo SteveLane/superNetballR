@@ -173,17 +173,17 @@
 <p>Using a dataset that contains all matches up to a given round in a season means it is easy to reproduce ladder positions. A <code>ladders</code> function is provided that can be used on full season data. For example, here is the ladder as it stood at the end of the 2017 home and away season:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">ladder &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ladders.html">ladders</a></span>(season_<span class="dv">2017</span>, <span class="dt">round_num =</span> <span class="dv">14</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">ladder</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 8 x 6</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   squadName                games goals_for goals_against percentage points</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;                    &lt;int&gt;     &lt;int&gt;         &lt;dbl&gt;      &lt;dbl&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 Melbourne Vixens            14       874           744      1.17      23</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 Sunshine Coast Lightning    14       808           726      1.11      23</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 GIANTS Netball              14       773           728      1.06      20</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Magpies Netball             14       770           730      1.05      18</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 Queensland Firebirds        14       778           756      1.03      15</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 6 NSW Swifts                  14       726           792      0.917      7</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 7 West Coast Fever            14       670           779      0.860      4</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 8 Adelaide Thunderbirds       14       648           792      0.818      2</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 8 x 7</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   squadName     games goals_for goals_against percentage points points_new</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;         &lt;int&gt;     &lt;int&gt;         &lt;dbl&gt;      &lt;dbl&gt;  &lt;int&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 Melbourne Vi…    14       874           744      1.17      23         85</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 Sunshine Coa…    14       808           726      1.11      23         79</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 GIANTS Netba…    14       773           728      1.06      20         68</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Magpies Netb…    14       770           730      1.05      18         63</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 Queensland F…    14       778           756      1.03      15         58</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 6 NSW Swifts       14       726           792      0.917      7         32</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 7 West Coast F…    14       670           779      0.860      4         25</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 8 Adelaide Thu…    14       648           792      0.818      2         16</span></a></code></pre></div>
 <p>The round number is provided above, as the home and away season contained 14 rounds.</p>
 </div>
   </div>
