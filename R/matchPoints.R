@@ -63,10 +63,10 @@ matchPoints <- function(df) {
                          awayPoints = sum(awayPoints)) %>%
         dplyr::ungroup()
     df1 <- points_new %>%
-        dplyr::select(contains("home")) %>%
+        dplyr::select(dplyr::contains("home")) %>%
         dplyr::rename(squadName = homeSquad, points_qtr = homePoints)
     df2 <- points_new %>%
-        dplyr::select(contains("away")) %>%
+        dplyr::select(dplyr::contains("away")) %>%
         dplyr::rename(squadName = awaySquad, points_qtr = awayPoints)
     points_new <- dplyr::bind_rows(df1, df2)
 
