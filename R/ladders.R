@@ -14,6 +14,47 @@
 #'
 #' @export
 ladders <- function(df, round_num = NULL, game_num = NULL, old_system = FALSE) {
+  if (!is.null(game_num) && is.null(round_num)) {
+    stop("If game number is supplied, round number must also be supplied.")
+  }
+  match_results <- matchResults(df = df)
+  if (!is.null(round_num) && is.null(game_num)) {
+    match_results <- match_results %>%
+      dplyr::filter(round <= round_num)
+  } else if (!is.null(round_num) && !is.null(game_num)) {
+    match_results <- match_results %>%
+      dplyr::filter(round <= round_num) %>%
+      dplyr::filter(!(round >= round_num && game > game_num))
+  }
+  ladder <- match_results %>%
+    dplyr::group_by(squadName) %>%
+    dplyr::summarise(
+      games = n(),
+      goals_for = sum(goals),
+      goals_against = sum(goals - score_diff),
+      percentage = goals_for / goals_against,
+      points = as.integer(sum(points))
+    ) %>%
+    dplyr::arrange(dplyr::desc(points), dplyr::desc(percentage))
+  ladder
+}
+
+#' @rdname ladders
+#' @export
+matchResults <- function(df) {
+    df <- df %>%
+        dplyr::group_by(round, game) %>%
+        tidyr::nest() %>%
+        dplyr::group_by(round, game) %>%
+        dplyr::mutate(game_results = purrr::map(data, matchPoints)) %>%
+        dplyr::select(-data) %>%
+        tidyr::unnest(cols = c(game_results))
+    df
+}
+
+#' @rdname ladders
+#' @export
+ladders_pre_2020 <- function(df, round_num = NULL, game_num = NULL, old_system = FALSE) {
     if (!is.null(game_num) && is.null(round_num)) {
         stop("If game number is supplied, round number must also be supplied.")
     }
@@ -41,15 +82,3 @@ ladders <- function(df, round_num = NULL, game_num = NULL, old_system = FALSE) {
     ladder
 }
 
-#' @rdname ladders
-#' @export
-matchResults <- function(df) {
-    df <- df %>%
-        dplyr::group_by(round, game) %>%
-        tidyr::nest() %>%
-        dplyr::group_by(round, game) %>%
-        dplyr::mutate(game_results = purrr::map(data, matchPoints)) %>%
-        dplyr::select(-data) %>%
-        tidyr::unnest(cols = c(game_results))
-    df
-}
