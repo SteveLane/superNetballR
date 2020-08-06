@@ -16,7 +16,7 @@ tidyMatch <- function(match) {
     team_info <- dplyr::bind_rows(team_info)
     team_stats <- dplyr::left_join(team_stats, team_info, by = "squadId")
     ## Home team
-    home_team <- dplyr::data_frame(
+    home_team <- dplyr::tibble(
                             squadId = c(match$matchInfo$homeSquadId,
                                         match$matchInfo$awaySquadId),
                             homeTeam = c(1L, 0L)
