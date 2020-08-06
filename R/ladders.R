@@ -50,6 +50,6 @@ matchResults <- function(df) {
         dplyr::group_by(round, game) %>%
         dplyr::mutate(game_results = purrr::map(data, matchPoints)) %>%
         dplyr::select(-data) %>%
-        tidyr::unnest()
+        tidyr::unnest(cols = c(game_results))
     df
 }
