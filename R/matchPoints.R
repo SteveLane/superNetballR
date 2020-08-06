@@ -7,6 +7,54 @@
 #' @return A data frame containing the final scores, and points for the ladder.
 #' @export
 matchPoints <- function(df) {
+  ## This first section calculates points based on the old system.
+  goals1 <- df %>%
+    dplyr::filter(stat == "goal_from_zone1") %>%
+    dplyr::group_by(squadName) %>%
+    dplyr::summarise(goals = sum(value))
+  goals2 <- df %>%
+    dplyr::filter(stat == "goal_from_zone2") %>%
+    dplyr::group_by(squadName) %>%
+    dplyr::summarise(goals2 = sum(value) * 2)
+  goals <- left_join(goals1, goals2, by = "squadName") %>%
+    mutate(goals = goals + goals2) %>%
+    select(-goals2)
+  home <- df %>%
+    dplyr::filter(stat == "homeTeam") %>%
+    dplyr::group_by(squadName) %>%
+    dplyr::select(-period) %>%
+    dplyr::distinct()
+  goals <- dplyr::left_join(goals, home, by = "squadName") %>%
+    dplyr::arrange(value)
+  score_diff <- diff(goals[['goals']])
+  goals <- goals %>%
+    dplyr::mutate(
+      score_diff = score_diff,
+      score_diff = ifelse(value == 0, score_diff * (-1),
+        score_diff),
+      points = dplyr::case_when(
+        score_diff > 0 ~ 4,
+        score_diff < 0 ~ 0,
+        TRUE ~ 2
+      )
+    ) %>%
+    dplyr::rename(isHome = value) %>%
+    dplyr::select(-stat)
+
+  ## Return
+  goals
+}
+
+#' Calculates the total goals of the match (pre 2020 season)
+#'
+#' \code{matchPoints_pre_2020} calculates final match goals and score
+#' difference, for seasons pre-2020.
+#'
+#' @param df Match data.
+#'
+#' @return A data frame containing the final scores, and points for the ladder.
+#' @export
+matchPoints_pre_2020 <- function(df) {
     ## This first section calculates points based on the old system.
     goals <- df %>%
         dplyr::filter(stat == "goals") %>%

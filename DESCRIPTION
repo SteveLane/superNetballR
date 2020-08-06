@@ -1,6 +1,6 @@
 Package: superNetballR
 Title: Downloads and tidies super netball statistics
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Steve", "Lane", email = "lane.s@unimelb.edu.au", role = c("aut", "cre"))
 Description: This package provides functions to easily download and manipulate data from super netball matches.
 Depends: R (>= 3.4.0)
