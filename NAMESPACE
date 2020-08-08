@@ -2,7 +2,9 @@
 
 export(downloadMatch)
 export(ladders)
+export(ladders_pre_2020)
 export(matchPoints)
+export(matchPoints_pre_2020)
 export(matchResults)
 export(tidyMatch)
 export(tidyPlayers)

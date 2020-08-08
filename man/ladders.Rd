@@ -3,11 +3,14 @@
 \name{ladders}
 \alias{ladders}
 \alias{matchResults}
+\alias{ladders_pre_2020}
 \title{Calculates ladder positions}
 \usage{
 ladders(df, round_num = NULL, game_num = NULL, old_system = FALSE)
 
 matchResults(df)
+
+ladders_pre_2020(df, round_num = NULL, game_num = NULL, old_system = FALSE)
 }
 \arguments{
 \item{df}{Data frame containing season match statistics.}

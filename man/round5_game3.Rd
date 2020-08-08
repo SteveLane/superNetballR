@@ -4,7 +4,9 @@
 \name{round5_game3}
 \alias{round5_game3}
 \title{Match and player statistics from round 5, game 3, season 2017.}
-\format{A list.}
+\format{
+A list.
+}
 \usage{
 round5_game3
 }
