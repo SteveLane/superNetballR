@@ -4,7 +4,8 @@
 \name{season_2017}
 \alias{season_2017}
 \title{Season 2017 match data.}
-\format{A data frame with 15360 rows and 8 variables:
+\format{
+A data frame with 15360 rows and 8 variables:
 \describe{
   \item{squadId}{Unique squad number}
   \item{squadName}{Full squad name}
@@ -15,7 +16,8 @@
   \item{period}{Which period the statistic is measured in}
   \item{round}{Round number of the match}
   \item{game}{Game number of the match}
-}}
+}
+}
 \usage{
 season_2017
 }

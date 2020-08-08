@@ -3,7 +3,6 @@
 \docType{package}
 \name{superNetballR}
 \alias{superNetballR}
-\alias{superNetballR-package}
 \title{\code{superNetballR} package}
 \description{
 Functions getting and manipulating Super Netball data.
