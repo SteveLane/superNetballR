@@ -4,7 +4,7 @@ author: "Steve Lane"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Getting Started with superNetballR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 # Introduction
 
 This vignette provides an overview to get you started with using `superNetballR`. As at 2018-04-08, this package contains the full 2017 season match statistics and player statistics.
+
+ *2020-08-08 Update*: The package has been updated to include the players team name in the full player statistics. This will make it easier to analyse player trends by team. The 2017 data has been updated accordingly.
 
 # Sourcing Match Data
 

@@ -37,3 +37,5 @@ data-raw/*
 docker/*
 /scripts/strip-libs.sh
 /Rmd/sn-get-data.Rmd
+doc
+Meta

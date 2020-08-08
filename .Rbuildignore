@@ -8,3 +8,5 @@
 ^figs$
 ^manuscripts$
 ^\.travis\.yml$
+^doc$
+^Meta$
