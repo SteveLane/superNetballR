@@ -50,13 +50,19 @@ tidyPlayers <- function(match) {
     player_info <- match$playerInfo$player
     player_info <- dplyr::bind_rows(player_info)
     player_stats <- dplyr::left_join(player_stats, player_info, by = "playerId")
+    squad_info <- match$teamInfo$team
+    squad_info <- dplyr::bind_rows(squad_info)
+    squad_info <- dplyr::select(squad_info, squadId, squadName)
+    player_stats <- dplyr::left_join(
+      player_stats, squad_info, by = "squadId"
+    )
     ## Check if there was overtime (matchInfo)
     final_period <- match$matchInfo$periodCompleted
     player_stats <- player_stats %>%
         dplyr::filter(period <= final_period) %>%
         dplyr::select(-displayName) %>%
         tidyr::gather(stat, value, -playerId, -shortDisplayName, -firstname,
-                      -surname, -period) %>%
+                      -surname, -period, -squadId, -squadName) %>%
         dplyr::mutate(
                    round = match$matchInfo$roundNumber,
                    game = match$matchInfo$matchNumber
