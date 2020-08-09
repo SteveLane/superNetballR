@@ -10,9 +10,37 @@
 ui <- navbarPage(
   "Title of the page",
   tabPanel(
-    "Player Statistics",
+    "Team Statistics",
     sidebarLayout(
-      sidebarPanel(),
+      sidebarPanel(
+        selectInput(
+          "team_selector",
+          label = "Team",
+          choices = team_input,
+          selected = "Melbourne Vixens"
+        ),
+        selectInput(
+          "season_selector",
+          label = "Season",
+          choices = season_input,
+          selected = "2017"
+        ),
+        selectInput(
+          "round_selector",
+          label = "Round",
+          choices = round_input,
+          selected = "1"
+        ),
+        hr(),
+        h2("Module Test"),
+        selectInput(
+          "round_selector_reactive",
+          label = "Round",
+          choices = NULL
+        ),
+        ## season_input_server("input1"),
+        width = 2
+      ),
       mainPanel(
         fluidRow(
           column(6,

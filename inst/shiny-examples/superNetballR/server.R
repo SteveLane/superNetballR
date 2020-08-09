@@ -44,4 +44,24 @@ server <- function(input, output, session) {
     output$text2 <- renderText({
         random_text(nwords = 50)
     })
+    observe({
+      season <- input$season_selector
+      squad <- input$team_selector
+      rounds <- season_2017 %>%
+        filter(
+          squadName == squad,
+          Season == season
+        ) %>%
+        distinct(round) %>%
+        select(round) %>%
+        unlist()
+      updateSelectInput(
+        session,
+        "round_selector_reactive",
+        label = "Round",
+        choices = rounds,
+        selected = "1"
+      )
+    })
+    ## season_input_server("input1")
 }
