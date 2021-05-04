@@ -4,7 +4,7 @@
 ## Author: Steve Lane
 ## Date: Saturday, 08 August 2020
 ## Synopsis: Server for shiny example.
-## Time-stamp: <2020-08-08 15:09:40 (sprazza)>
+## Time-stamp: <2021-05-04 12:15:09 (sprazza)>
 ################################################################################
 ################################################################################
 server <- function(input, output, session) {
@@ -44,24 +44,25 @@ server <- function(input, output, session) {
     output$text2 <- renderText({
         random_text(nwords = 50)
     })
-    observe({
-      season <- input$season_selector
-      squad <- input$team_selector
-      rounds <- season_2017 %>%
-        filter(
-          squadName == squad,
-          Season == season
-        ) %>%
-        distinct(round) %>%
-        select(round) %>%
-        unlist()
-      updateSelectInput(
-        session,
-        "round_selector_reactive",
-        label = "Round",
-        choices = rounds,
-        selected = "1"
-      )
-    })
+    team_series_server('team_series1', by_game)
+    ## observe({
+    ##   season <- input$season_selector
+    ##   squad <- input$team_selector
+    ##   rounds <- season_2017 %>%
+    ##     filter(
+    ##       squadName == squad,
+    ##       Season == season
+    ##     ) %>%
+    ##     distinct(round) %>%
+    ##     select(round) %>%
+    ##     unlist()
+    ##   updateSelectInput(
+    ##     session,
+    ##     "round_selector_reactive",
+    ##     label = "Round",
+    ##     choices = rounds,
+    ##     selected = "1"
+    ##   )
+    ## })
     ## season_input_server("input1")
 }
