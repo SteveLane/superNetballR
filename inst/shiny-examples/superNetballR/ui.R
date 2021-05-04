@@ -4,7 +4,7 @@
 ## Author: Steve Lane
 ## Date: Saturday, 08 August 2020
 ## Synopsis: UI for shiny example.
-## Time-stamp: <2021-05-04 12:14:13 (sprazza)>
+## Time-stamp: <2021-05-04 12:49:18 (sprazza)>
 ################################################################################
 ################################################################################
 ui <- navbarPage(
@@ -12,25 +12,5 @@ ui <- navbarPage(
   tabPanel(
     "Team Statistics",
     team_series_ui('team_series1')
-  ),
-  tabPanel(
-    "Panel Two",
-    sidebarLayout(
-      sidebarPanel(),
-      mainPanel(
-        h2("A Random DT"),
-        DTOutput("data_table2"),
-        h2("A Random Image"),
-        plotOutput("image2", height = "300px"),
-        h2("A Random Plot"),
-        plotOutput("plot2"),
-        h2("A Random Print"),
-        verbatimTextOutput("print2"),
-        h2("A Random Table"),
-        tableOutput("table2"),
-        h2("A Random Text"),
-        tableOutput("text2")
-      )
-    )
   )
 )

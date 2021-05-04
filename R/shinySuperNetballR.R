@@ -14,6 +14,6 @@ shinySuperNetballR <- function() {
     stop("Can't find the superNetballR shiny directory. Try re-installing `superNetballR`.", call. = FALSE)
   }
 
-  source('./team_series_module.R')
+  source(paste0(my_dir, '/team_series_module.R'))
   shiny::runApp(my_dir, display.mode = "normal")
 }
