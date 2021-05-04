@@ -45,3 +45,15 @@
 #'
 #' @format A list.
 "round5_game3"
+
+#' Team colours.
+#'
+#' A dataset containing hex-coded team colours for each team.
+#'
+#' @format A data frame with 8 rows and 3 variables:
+#' \describe{
+#'   \item{squadName}{Full squad name}
+#'   \item{squadId}{Unique squad number}
+#'   \item{squadColour}{Hex-coded team colour}
+#' }
+"team_colours"
