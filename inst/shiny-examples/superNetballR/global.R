@@ -4,15 +4,13 @@
 ## Author: Steve Lane
 ## Date: Saturday, 08 August 2020
 ## Synopsis: Sets up global libraries and functions for example shiny.
-## Time-stamp: <2021-05-04 11:57:17 (sprazza)>
+## Time-stamp: <2021-05-04 12:38:40 (sprazza)>
 ################################################################################
 ################################################################################
 library(here)
 library(dplyr)
 library(ggplot2)
 library(shiny)
-library(shinipsum)
-library(DT)
 library(superNetballR)
 
 ################################################################################
